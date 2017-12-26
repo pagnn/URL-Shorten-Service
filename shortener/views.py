@@ -8,7 +8,7 @@ from .forms import SubmitURLForm
 
 class HomeView(View):
 	def get(self,request,*args,**kwargs):
-		form=SubmitURLForm
+		form=SubmitURLForm()
 		context={
 			'form':form
 		}
@@ -23,6 +23,3 @@ class HomeView(View):
 		return render(request,'shortener/home.html',context)
 
 
-class UssCBView(RedirectView):
-	def get(self,request,shortcode=None,*args,**kwargs):
-		return HttpResponse('hello there')

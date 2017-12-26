@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from shortener.views import UssCBView,HomeView
+from shortener.views import HomeView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',HomeView.as_view()),
-    url(r'^(?P<shortcode>[\w-]+){6,15}/$',UssCBView.as_view())
+    url(r'^(?P<shortcode>[\w-]+){6,15}/$',HomeView.as_view()),
 ]
