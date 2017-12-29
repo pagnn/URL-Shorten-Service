@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from shortener.views import HomeView
+from shortener.views import UssRedirectView,UssView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^(?P<shortcode>[\w-]+){6,15}/$',HomeView.as_view()),
+    url(r'^$',UssView.as_view(),name='home'),
+    url(r'^(?P<shortcode>[\w-]+)/$',UssRedirectView,name='shortener'),
 ]

@@ -6,7 +6,12 @@ from .models import UssURL
 from .forms import SubmitURLForm
 # Create your views here.
 
-class HomeView(View):
+def UssRedirectView(request,shortcode=None):
+	print(shortcode)
+	obj=get_object_or_404(UssURL,shortcode=shortcode)
+	return HttpResponseRedirect(obj.url)
+
+class UssView(View):
 	def get(self,request,*args,**kwargs):
 		form=SubmitURLForm()
 		context={
