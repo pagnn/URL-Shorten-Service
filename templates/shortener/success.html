@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1 class="cover-heading">{% if created %}Created{% else %}It already exists.{% endif %}</h1>
+<p>{{ object.url }}</p>
+{% if object.clickevent %}
+<p class='lead'>Count: {{ object.clickevent.count }}</p>
+{% endif %}
+<a href='{{ object.get_absolute_url }}'>{{ object.get_absolute_url }}</a>	
+
+{% endblock content %}
+

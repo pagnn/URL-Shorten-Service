@@ -25,7 +25,7 @@ SECRET_KEY = 'vz3z%pkf922ze7-!4^%-5%-vbu5aimh2bw6hgfwx-2=*c@l_q+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.pagnn.com','pagnn.com']
 
 
 # Application definition
@@ -37,10 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_hosts',
+    'crispy_forms',
     'shortener',
+    'analytics'
 ]
 
 MIDDLEWARE = [
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,10 +52,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware',
 ]
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 ROOT_URLCONF = 'uss.urls'
-
+ROOT_HOSTCONF = 'uss.hosts'
+DEFAULT_HOST = 'www'
+DEFAULT_REDIRECT_URL='http://www.pagnn.com:8000'
+PARENT_HOST='pagnn.com'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
